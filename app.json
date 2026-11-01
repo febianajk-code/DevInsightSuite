@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "Device Insight Suite Deep Scan",
+    "slug": "device-insight-suite",
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "android": {
+      "package": "com.deviceinsight.suite",
+      "versionCode": 2,
+      "permissions": [
+        "android.permission.ACCESS_NETWORK_STATE"
+      ]
+    }
+  }
+}
