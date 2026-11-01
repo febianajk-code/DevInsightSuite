@@ -2,7 +2,6 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, View, Text, TouchableOpacity, StyleSheet, RefreshControl, Alert} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import * as Device from 'expo-device';
-import * as Battery from 'expo-battery';
 import {Accelerometer, Gyroscope, Magnetometer} from 'expo-sensors';
 import * as Sharing from 'expo-sharing';
 import * as FileSystem from 'expo-file-system/legacy';
@@ -26,7 +25,7 @@ export default function App(){
   add(a,'PENYIMPANAN','Total kapasitas',bytes(totalDisk));add(a,'PENYIMPANAN','Ruang kosong',bytes(freeDisk));add(a,'PENYIMPANAN','Ruang terpakai',bytes(Math.max(0,(totalDisk||0)-(freeDisk||0))));
   add(a,'JARINGAN','Operator seluler',carrier,'LIMITED');add(a,'JARINGAN','Alamat IP',ip,'LIMITED');add(a,'JARINGAN','MAC address',mac,'LIMITED');
   add(a,'APLIKASI','Sumber instalasi',installSource,'LIMITED');
-  const level=await safe(()=>Battery.getBatteryLevelAsync(),battLevel);const state=await safe(()=>Battery.getBatteryStateAsync());const low=await safe(()=>Battery.isLowPowerModeEnabledAsync());setBattery(`Level ${level>=0?Math.round(level*100)+'%':'tidak tersedia'} · Status ${state} · Hemat daya ${low?'aktif':'nonaktif/tidak diketahui'}`);
+  setBattery(`Level ${typeof battLevel==='number'&&battLevel>=0?Math.round(battLevel*100)+'%':'tidak tersedia'} · Dibaca dari API perangkat`);
   const sensorChecks=await Promise.all([Accelerometer.isAvailableAsync(),Gyroscope.isAvailableAsync(),Magnetometer.isAvailableAsync()]);setSensor(`Accelerometer: ${sensorChecks[0]?'tersedia':'tidak terdeteksi'} · Gyroscope: ${sensorChecks[1]?'tersedia':'tidak terdeteksi'} · Magnetometer: ${sensorChecks[2]?'tersedia':'tidak terdeteksi'}`);
   setItems(a);setLast(new Date().toLocaleString());setLoading(false);
  },[]);
