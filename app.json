@@ -1,4 +1,4 @@
-{
+{{
   "expo": {
     "name": "Device Insight Suite Deep Scan",
     "slug": "device-insight-suite",
@@ -6,12 +6,18 @@
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
+    "owner": "f13s-team",
     "android": {
       "package": "com.deviceinsight.suite",
       "versionCode": 2,
       "permissions": [
         "android.permission.ACCESS_NETWORK_STATE"
       ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e3667af6-90dc-4b86-869d-cf67de621e1a"
+      }
     }
   }
 }
